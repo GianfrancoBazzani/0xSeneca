@@ -1,0 +1,28 @@
+name: I Have Spoken
+
+on:
+  schedule:
+    # Runs at 00:00 UTC every Sunday
+    - cron: '0 */12 * * 0'
+  workflow_dispatch:
+
+jobs:
+  i-have-spoken:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.8"
+          cache: "pip"
+
+      - run: pip3 install -r src/requirements.txt
+        shell: bash
+
+      - run: python3 src/main.py  
+        env:
+          OPEN_AI_KEY: ${{secrets.OPEN_AI_KEY}}
+          TWITTER_API_KEY: ${{secrets.TWITTER_API_KEY}}
+          TWITTER_API_KEY_SECRET: ${{secrets.tWITTER_API_KEY_SECRET}}
+        shell: bash
