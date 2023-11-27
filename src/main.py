@@ -47,12 +47,12 @@ def generate_quote():
 
     prompt_request = {
             "role": "user",
-            "content": "Take a breath and generate stoic twit for your followers. Focus on stoic philosophy and practices and tools, write motivational texts to engage your followers to be the best version of themselves.",
+            "content": "Take a breath and generate stoic tweet for your followers. Focus on stoic philosophy and practices and tools, write motivational texts to engage your followers to be the best version of themselves.",
         }
     
     prompt_request_pinned = {
         "role": "user",
-        "content": "Take a breath and generate a twit to be pinned in your profile that describe your account and what you do.",
+        "content": "Take a breath and generate a tweet to be pinned in your profile that describe your account and what you do.",
     }
     
     messages = [
