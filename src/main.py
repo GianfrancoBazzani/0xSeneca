@@ -13,8 +13,8 @@ import itertools
 def main():
     try:
         quote = generate_quote()
-        print(quote)
-        #post_on_x(quote)
+        #print(quote)
+        post_on_x(quote)
 
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
