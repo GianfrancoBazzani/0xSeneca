@@ -47,7 +47,7 @@ def generate_quote():
 
     prompt_request = {
             "role": "user",
-            "content": "Take a breath and generate stoic tweet for your followers. Focus on stoic philosophy and practices and tools, write motivational texts to engage your followers to be the best version of themselves.",
+            "content": "Take a breath and generate stoic tweet for your followers. Choose one virtue, a stoic tool or a famous stoic quote and write divulgation text to teach your followers to be the best version of themselves.",
         }
     
     prompt_request_pinned = {
@@ -70,16 +70,14 @@ def generate_quote():
     messages.extend(old_posts_formatted)
     messages.append(prompt_request)
 
-    # print(json.dumps(messages, indent=4))
-
     response = client.chat.completions.create(
         model="gpt-4-1106-preview",
         response_format={"type": "json_object"},
-        frequency_penalty=0.7,
-        presence_penalty=0.7,
+        frequency_penalty=0.8,
+        presence_penalty=0.8,
         messages=messages,
     )
-    post = json.loads(response.choices[0].message.content)["content"]
+    post = u'{0}'.format(json.loads(response.choices[0].message.content)["content"])
 
     posts_history.append(post)
     with open("src/posts_history.json", "w") as file:
